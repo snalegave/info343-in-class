@@ -319,6 +319,9 @@ function getGreeting(thePlayer) {
  */
 function levelUp(thePlayer) {
     //TODO: implement this function
+    player.level++;
+    player.totalPoints += Math.ceil(player.totalPoints * (player.level*0.1));
+    return player;
 }
 
 //create a new player
@@ -330,6 +333,7 @@ let player2 = {
 //we can add the property access expression `.totalPoints` after levelUp() 
 //because that function returns the object that was passed into it.
 console.log("points after leveling-up: %d", levelUp(player2).totalPoints);
+
 
 /* FUNCTIONS and ARRAYS */
 
@@ -346,7 +350,11 @@ console.log("points after leveling-up: %d", levelUp(player2).totalPoints);
  */
 function randomIntegers(amount, max) {
     //TODO: implement this function according to the comments above
-
+    let randomNums = [];
+    for (let i = 0; i<amount; i++){
+        randomNums.push(Math.round(Math.random()*max));
+    }
+    return randomNums;
 }
 
 let randomNums = randomIntegers(10, 100);
@@ -359,7 +367,13 @@ console.log("random integers:", randomNums);
  */
 function max(arrayOfNumbers) {
     //TODO: implement this function according to the comments above
-
+    let max = arrayOfNumbers[0];
+    for (let i = 0; i<arrayOfNumbers.length; i++){
+        if(arrayOfNumbers[i]>max){
+            max= arrayOfNumbers[i];
+        }
+    }
+    return max;
 }
 
 console.log("the maximum value in %o is %d", randomNums, max(randomNums));
@@ -372,7 +386,9 @@ console.log("the maximum value in %o is %d", randomNums, max(randomNums));
  * @returns {*[]}
  */
 function reverseArray(input) {
-    //TODO: implement this function according to the comments    
+    //TODO: implement this function according to the comments  
+    let reversed = input.reverse();
+    return reversed;  
 }
 
 console.log("random integers reversed:", reverseArray(randomNums));
@@ -396,6 +412,8 @@ it doesn't put anything in between the elements.
 //remember that you already have a reverseArray() function
 let stringToReverse = "stressed";
 
+let reverseStress = reverseArray(stringToReverse.split("")).join("");
+console.log(reverseStress);
 
 /* FUNCTIONS CALLING FUNCTIONS */
 
